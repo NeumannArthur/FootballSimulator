@@ -29,7 +29,7 @@ public class Main {
                         mainScreen(tournament);
                         break;
                     } else {
-                        System.out.println("Please check if your input is valid!");
+                        System.out.println("Did you spell the team name correctly? \n\n\n");
                         seeSchedules(tournament);
                     }
                 }
@@ -40,13 +40,13 @@ public class Main {
             case "2":
                 System.out.println("Which matchday would you like to see?");
                 int matchday = scanner.nextInt();
+                if (matchday > 34) { System.out.println("The season only has 34 machtdays!!!"); }
                 tournament.getMatchdaySchedule(matchday);
                 mainScreen(tournament);
                 break;
 
             case "3":
                 tournament.getSchedule();
-                scanner.close();
                 mainScreen(tournament);
                 break;
 
@@ -111,39 +111,29 @@ public class Main {
     public static void main(String[] args) {
 
         ArrayList<Team> bundesligaTeams = new ArrayList<>();
-        bundesligaTeams.add(new Team("Bayern Munich", "Germany"));
-        bundesligaTeams.add(new Team("Borussia Dortmund", "Germany"));
-        bundesligaTeams.add(new Team("RB Leipzig", "Germany"));
-        bundesligaTeams.add(new Team("Bayer Leverkusen", "Germany"));
-        bundesligaTeams.add(new Team("VfL Wolfsburg", "Germany"));
-        bundesligaTeams.add(new Team("Eintracht Frankfurt", "Germany"));
-        bundesligaTeams.add(new Team("Borussia Mönchengladbach", "Germany"));
-        bundesligaTeams.add(new Team("SC Freiburg", "Germany"));
-        bundesligaTeams.add(new Team("TSG Hoffenheim", "Germany"));
-        bundesligaTeams.add(new Team("Union Berlin", "Germany"));
-        bundesligaTeams.add(new Team("Hertha BSC", "Germany"));
-        bundesligaTeams.add(new Team("Mainz 05", "Germany"));
-        bundesligaTeams.add(new Team("FC Augsburg", "Germany"));
-        bundesligaTeams.add(new Team("VfB Stuttgart", "Germany"));
-        bundesligaTeams.add(new Team("Arminia Bielefeld", "Germany"));
-        bundesligaTeams.add(new Team("1. FC Köln", "Germany"));
-        bundesligaTeams.add(new Team("VfL Bochum", "Germany"));
-        bundesligaTeams.add(new Team("SpVgg Greuther Fürth", "Germany"));
+        bundesligaTeams.add(new Team("Bayern", "Germany"));
+        bundesligaTeams.add(new Team("Dortmund", "Germany"));
+        bundesligaTeams.add(new Team("Leipzig", "Germany"));
+        bundesligaTeams.add(new Team("Leverkusen", "Germany"));
+        bundesligaTeams.add(new Team("Wolfsburg", "Germany"));
+        bundesligaTeams.add(new Team("Frankfurt", "Germany"));
+        bundesligaTeams.add(new Team("Gladbach", "Germany"));
+        bundesligaTeams.add(new Team("Freiburg", "Germany"));
+        bundesligaTeams.add(new Team("Hoffenheim", "Germany"));
+        bundesligaTeams.add(new Team("Union", "Germany"));
+        bundesligaTeams.add(new Team("Hertha", "Germany"));
+        bundesligaTeams.add(new Team("Mainz#", "Germany"));
+        bundesligaTeams.add(new Team("Augsburg", "Germany"));
+        bundesligaTeams.add(new Team("VfB", "Germany"));
+        bundesligaTeams.add(new Team("Bielefeld", "Germany"));
+        bundesligaTeams.add(new Team("FC Köln", "Germany"));
+        bundesligaTeams.add(new Team("Bochum", "Germany"));
+        bundesligaTeams.add(new Team("KSC", "Germany"));
 
         Tournament bundesliga = new Tournament("Bundesliga", 2024, bundesligaTeams);
         bundesliga.createSchedule();
 
         mainScreen(bundesliga);
-
-//        Person Franzi = new Person("Franzi", 20, true);
-//        System.out.println(Franzi.getAge());
-//        System.out.println(Franzi.getName());
-//        Franzi.setName("Bob");
-//        System.out.println(Franzi.getName());
-//
-//        System.out.println(Franzi.cool);
-//        Franzi.makeCool(true);
-//        System.out.println(Franzi.cool);
 
     }
 }

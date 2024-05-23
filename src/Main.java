@@ -22,16 +22,20 @@ public class Main {
             case "1":
                 System.out.println("Enter team name");
                 String teamOption = scanner.nextLine();
+                boolean goodName = false;
 
                 for (Team team : tournament.getTeamList()) {
                     if (Objects.equals(teamOption, team.getName())) {
                         tournament.getTeamSchedule(team);
                         mainScreen(tournament);
+                        goodName = true;
                         break;
-                    } else {
-                        System.out.println("Did you spell the team name correctly? \n\n\n");
-                        seeSchedules(tournament);
                     }
+                }
+                if (! goodName) {
+                    System.out.println("Please enter a valid team Name! \n\n\n");
+                    seeSchedules(tournament);
+                    break;
                 }
                 clearConsole();
                 scanner.close();
@@ -122,11 +126,11 @@ public class Main {
         bundesligaTeams.add(new Team("Hoffenheim", "Germany"));
         bundesligaTeams.add(new Team("Union", "Germany"));
         bundesligaTeams.add(new Team("Hertha", "Germany"));
-        bundesligaTeams.add(new Team("Mainz#", "Germany"));
+        bundesligaTeams.add(new Team("Mainz", "Germany"));
         bundesligaTeams.add(new Team("Augsburg", "Germany"));
         bundesligaTeams.add(new Team("VfB", "Germany"));
         bundesligaTeams.add(new Team("Bielefeld", "Germany"));
-        bundesligaTeams.add(new Team("FC Köln", "Germany"));
+        bundesligaTeams.add(new Team("Köln", "Germany"));
         bundesligaTeams.add(new Team("Bochum", "Germany"));
         bundesligaTeams.add(new Team("KSC", "Germany"));
 
@@ -134,6 +138,16 @@ public class Main {
         bundesliga.createSchedule();
 
         mainScreen(bundesliga);
+
+//        Person Franzi = new Person("Franzi", 20, true);
+//        System.out.println(Franzi.getAge());
+//        System.out.println(Franzi.getName());
+//        Franzi.setName("Bob");
+//        System.out.println(Franzi.getName());
+//
+//        System.out.println(Franzi.cool);
+//        Franzi.makeCool(true);
+//        System.out.println(Franzi.cool);
 
     }
 }

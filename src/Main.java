@@ -115,7 +115,8 @@ public class Main {
     public static void main(String[] args) {
 
         ArrayList<Team> bundesligaTeams = new ArrayList<>();
-        bundesligaTeams.add(new Team("Bayern", "Germany"));
+        Team Bayern = new Team("Bayern", "Germany");
+        bundesligaTeams.add(Bayern);
         bundesligaTeams.add(new Team("Dortmund", "Germany"));
         bundesligaTeams.add(new Team("Leipzig", "Germany"));
         bundesligaTeams.add(new Team("Leverkusen", "Germany"));
@@ -137,17 +138,19 @@ public class Main {
         Tournament bundesliga = new Tournament("Bundesliga", 2024, bundesligaTeams);
         bundesliga.createSchedule();
 
+        Player player1 = new Player("Manuel Neuer", 38,"goalkeeper");
+        Player player2 = new Player("Joshua Kimmich", 29, "defender");
+
+        player1.setSkill("GK jumping", 85);
+        player2.setSkill("heading", 65);
+
+        System.out.println(player1.getCurrentTeam().name);
+        player1.transferTeam(Bayern);
+        System.out.println(player1.getCurrentTeam().name);
+
+
         mainScreen(bundesliga);
 
-//        Person Franzi = new Person("Franzi", 20, true);
-//        System.out.println(Franzi.getAge());
-//        System.out.println(Franzi.getName());
-//        Franzi.setName("Bob");
-//        System.out.println(Franzi.getName());
-//
-//        System.out.println(Franzi.cool);
-//        Franzi.makeCool(true);
-//        System.out.println(Franzi.cool);
 
     }
 }

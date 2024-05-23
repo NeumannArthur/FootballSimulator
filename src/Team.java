@@ -18,6 +18,7 @@ public class Team {
     public Team(String name, String country) {
         this.name = name;
         this.country = country;
+        this.roster = new ArrayList<Player>();
     }
 
     //handling having played a match
@@ -55,6 +56,18 @@ public class Team {
 
     public String getName() {
         return this.name;
+    }
+
+    public void playerTransferIn(Player player) {
+        this.roster.add(player);
+    }
+
+    public void playerTransferOut(Player player) {
+        this.roster.remove(player);
+    }
+
+    public ArrayList<Player> getRoster() {
+        return this.roster;
     }
 
 

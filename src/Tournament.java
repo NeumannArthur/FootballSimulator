@@ -70,7 +70,10 @@ public class Tournament {
         System.out.println("Schedule for " + team.getName() + ":");
         for(Match match : matches) {
             if (match.getTeam1().equals(team) || match.getTeam2().equals(team)) {
-                System.out.println("Matchday " + match.getMatchday() + ":\n" + match.getTeam1().name + " vs " + match.getTeam2().name);
+                if (this.currentMatchday > match.getMatchday()) {
+                    System.out.println("\nMatchday " + match.getMatchday() + ": " + match.getTeam1().name + " " + match.getScore().getFirst() + " : " + match.getScore().getSecond() + " " +
+                                    match.getTeam2().name);
+                } else { System.out.println("\nMatchday " + match.getMatchday() + ": " + match.getTeam1().name + " vs " + match.getTeam2().name); };
             }
         }
     }
@@ -122,6 +125,14 @@ public class Tournament {
         return this.teams;
     }
 
-
+    public Team getTeam(String name) {
+        for (Team team : teams) {
+            if (team.name.equalsIgnoreCase(name)) {
+                return team;
+            }
+        }
+        System.out.println("The given team does not exist!");
+        return null;
+    }
 
 }

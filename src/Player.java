@@ -7,6 +7,7 @@ public class Player {
     private String position;
     private Map<String, Integer> skills;
     private Team currentTeam;
+    private double totalSkill;
 
     public Player(String name, int age, String position) {
         this.name = name;
@@ -14,6 +15,7 @@ public class Player {
         this.position = position.toLowerCase();
         this.skills = new HashMap<>();
         this.currentTeam = null;
+        this.totalSkill = 0.0;
         initializeSkills();
     }
 
@@ -85,11 +87,12 @@ public class Player {
         if (skills.containsKey(skill)) {
             if (value >= 0 && value <= 100) {
                 skills.put(skill, value);
+                updateTotalSkill();
             } else {
                 System.out.println("Skill value between 0 and 100!");
             }
         } else {
-            System.out.println("Skill not found for this poisition!");
+            System.out.println("Skill not found for this position!");
         }
     }
 
@@ -102,5 +105,17 @@ public class Player {
             return (new Team("Free Agent", "Player's country"));
         }
         return this.currentTeam;
+    }
+
+    private void updateTotalSkill() {
+        int tempSkill = 0;
+        for (Map.Entry<String, Integer> skill : this.getSkills().entrySet()) {
+            tempSkill += skill.getValue();
+        }
+        totalSkill = tempSkill / skills.size();
+    }
+
+    public double getTotalSkill() {
+        return this.totalSkill;
     }
 }

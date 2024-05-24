@@ -141,8 +141,19 @@ public class Main {
         Player player1 = new Player("Manuel Neuer", 38,"goalkeeper");
         Player player2 = new Player("Joshua Kimmich", 29, "defender");
 
-        player1.setSkill("GK jumping", 85);
-        player2.setSkill("heading", 65);
+        player1.setSkill("GK jumping", 95);
+        System.out.println(player1.getTotalSkill());
+        player1.setSkill("GK catching", 90);
+        System.out.println(player1.getTotalSkill());
+        player1.setSkill("GK positioning", 93);
+        System.out.println(player1.getTotalSkill());
+        player1.setSkill("GK reflexes", 85);
+        System.out.println(player1.getTotalSkill());
+        player1.setSkill("short passing", 99);
+        System.out.println(player1.getTotalSkill());
+        player1.setSkill("long passing", 95);
+        System.out.println(player1.getTotalSkill());
+
 
         System.out.println(player1.getCurrentTeam().name);
         player1.transferTeam(Bayern);

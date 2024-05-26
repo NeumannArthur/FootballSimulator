@@ -19,7 +19,7 @@ public class Main {
         String scheduleOption = scanner.nextLine();
 
         switch(scheduleOption) {
-            case "1":
+            case "1" -> {
                 System.out.println("Enter team name");
                 String teamOption = scanner.nextLine();
                 boolean goodName = false;
@@ -39,30 +39,30 @@ public class Main {
                 }
                 clearConsole();
                 scanner.close();
-                break;
+            }
 
-            case "2":
+            case "2" -> {
                 System.out.println("Which matchday would you like to see?");
                 int matchday = scanner.nextInt();
                 if (matchday > 34) { System.out.println("The season only has 34 machtdays!!!"); }
                 tournament.getMatchdaySchedule(matchday);
                 mainScreen(tournament);
-                break;
+            }
 
-            case "3":
+            case "3" -> {
                 tournament.getSchedule();
                 mainScreen(tournament);
-                break;
+            }
 
-            case "4":
+            case "4" -> {
                 mainScreen(tournament);
                 scanner.close();
-                break;
+            }
 
-            default:
+            default -> {
                 System.out.println("Please enter a valid option!");
                 seeSchedules(tournament);
-                break;
+            }
         }
     }
 
@@ -75,13 +75,13 @@ public class Main {
         System.out.println("1. See table?\n2. Play matchday\n3. See schedules\n4. quit");
         String start = scanner.nextLine();
         switch(start) {
-            case "1":
+            case "1" -> {
                 clearConsole();
                 bundesliga.printTable();
                 mainScreen(bundesliga);
-                break;
+            }
 
-            case "2":
+            case "2" -> {
                 clearConsole();
                 if (bundesliga.getCurrentMatchday() == 35) {
                     System.out.println("The season is over!");
@@ -91,22 +91,23 @@ public class Main {
                 System.out.println("Playing matchday " + bundesliga.getCurrentMatchday());
                 bundesliga.playMatchday();
                 mainScreen(bundesliga);
-                break;
+            }
 
-            case "3":
+            case "3" -> {
                 clearConsole();
                 System.out.println("\n\n\n");
                 seeSchedules(bundesliga);
-                break;
+            }
 
-            case "4":
+            case "4" -> {
                 System.out.println("Thank you for playing!");
                 scanner.close();
-                break;
+            }
 
-            default:
+            default -> {
                 System.out.println("Please enter a valid option!!!");
                 mainScreen(bundesliga);
+            }
         }
     }
 
@@ -139,7 +140,6 @@ public class Main {
         bundesliga.createSchedule();
 
         Player player1 = new Player("Manuel Neuer", 38,"goalkeeper");
-        Player player2 = new Player("Joshua Kimmich", 29, "defender");
 
         player1.setSkill("GK jumping", 95);
         System.out.println(player1.getTotalSkill());

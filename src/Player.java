@@ -5,7 +5,7 @@ public class Player {
     private String name;
     private int age;
     private String position;
-    private Map<String, Integer> skills;
+    final  Map<String, Integer> skills;
     private Team currentTeam;
     private double totalSkill;
 
@@ -22,21 +22,11 @@ public class Player {
     private void initializeSkills() {
         String[] skillSet = new String[]{};
         switch (position.toLowerCase()) {
-            case "goalkeeper":
-                skillSet = new String[]{"GK jumping", "GK catching", "GK positioning", "GK reflexes", "short passing", "long passing"};
-                break;
-            case "defender":
-                skillSet = new String[]{"positioning", "physical", "speed", "short passing", "long passing", "heading"};
-                break;
-            case "midfielder":
-                skillSet = new String[]{"positioning", "physical", "speed", "short passing", "long passing", "shooting"};
-                break;
-            case "attacker":
-                skillSet = new String[]{"positioning", "physical", "speed", "shooting", "short passing", "agility", "heading"};
-                break;
-            default:
-                System.out.println("Invalid position" + position);
-                break;
+            case "goalkeeper" -> skillSet = new String[]{"GK jumping", "GK catching", "GK positioning", "GK reflexes", "short passing", "long passing"};
+            case "defender" -> skillSet = new String[]{"positioning", "physical", "speed", "short passing", "long passing", "heading"};
+            case "midfielder" -> skillSet = new String[]{"positioning", "physical", "speed", "short passing", "long passing", "shooting"};
+            case "attacker" -> skillSet = new String[]{"positioning", "physical", "speed", "shooting", "short passing", "agility", "heading"};
+            default -> System.out.println("Invalid position" + position);
         }
 
         for (String skill : skillSet) {

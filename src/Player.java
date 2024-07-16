@@ -22,7 +22,7 @@ public class Player {
     private void initializeSkills() {
         String[] skillSet = new String[]{};
         switch (position.toLowerCase()) {
-            case "goalkeeper" -> skillSet = new String[]{"GK jumping", "GK catching", "GK positioning", "GK reflexes", "short passing", "long passing"};
+            case "goalkeeper" -> skillSet = new String[]{"GK jumping", "GK catching", "GK positioning", "GK reflexes", "GK passing"};
             case "defender" -> skillSet = new String[]{"positioning", "physical", "speed", "short passing", "long passing", "heading"};
             case "midfielder" -> skillSet = new String[]{"positioning", "physical", "speed", "short passing", "long passing", "shooting"};
             case "attacker" -> skillSet = new String[]{"positioning", "physical", "speed", "shooting", "short passing", "agility", "heading"};

@@ -5,7 +5,7 @@ public class Team {
     private int skill;
     final String name;
     final String country;
-    private ArrayList<Player> roster;
+    final ArrayList<Player> roster;
 
     //Team's season stats
     private int playedMatches = 0;
@@ -13,12 +13,15 @@ public class Team {
     private int wins = 0;
     private int draws = 0;
     private int losses = 0;
+    private double teamStrength;
+
 
     //Constructor
     public Team(String name, String country) {
         this.name = name;
         this.country = country;
-        this.roster = new ArrayList<Player>();
+        this.roster = new ArrayList<>();
+        this.teamStrength = calculateTeamStrength();
     }
 
     //handling having played a match
@@ -58,12 +61,29 @@ public class Team {
         return this.name;
     }
 
+    private double calculateTeamStrength() {
+        if (roster.isEmpty()) {
+            return Math.random() * 50 + 50;
+        }
+        return roster.stream().mapToDouble(Player::getTotalSkill).average().orElse(75);
+    }
+
+    public double getTeamStrength() {
+        return this.teamStrength;
+    }
+
+    public void updateTeamStrength() {
+        this.teamStrength = calculateTeamStrength();
+    }
+
     public void playerTransferIn(Player player) {
         this.roster.add(player);
+        updateTeamStrength();
     }
 
     public void playerTransferOut(Player player) {
         this.roster.remove(player);
+        updateTeamStrength();
     }
 
     public ArrayList<Player> getRoster() {

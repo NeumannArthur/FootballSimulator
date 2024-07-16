@@ -1,4 +1,5 @@
 import java.util.Objects;
+import java.util.Random;
 
 public class Match {
 
@@ -6,6 +7,8 @@ public class Match {
     private Team team1;
     private Team team2;
     private Tuple<Integer, Integer> score;
+    private static final double Home_Advantage = 1.1;
+    private static final Random random = new Random();
 
     //Match facts
     private int matchday;
@@ -56,14 +59,35 @@ public class Match {
 
     // simulation logic
     public void play() {
-        score.setFirst(0);
-        score.setSecond(0);
-        int scoreTeam1 = (int) (Math.random() * 100);
-        int scoreTeam2 = (int) (Math.random() * 100);
+        double team1Strength = team1.getTeamStrength() * Home_Advantage;
+        double team2Strength = team2.getTeamStrength();
+
+        int scoreTeam1 = simulateScore(team1Strength);
+        int scoreTeam2 = simulateScore(team2Strength);
+
         score.setFirst(scoreTeam1);
         score.setSecond(scoreTeam2);
         getResult(score);
     }
+
+    private int simulateScore(double teamStrength) {
+        double lambda = Math.log(teamStrength) / 3;
+        return getPoissonRandom(lambda);
+    }
+
+    private int getPoissonRandom(double lambda) {
+        double L = Math.exp(-lambda);
+        double p = 1.0;
+        int k = 0;
+
+        do {
+            k++;
+            p *= random.nextDouble();
+        } while (p > L);
+
+        return k-1;
+    }
+
 
     public Tuple<Integer, Integer> getScore() {
         return this.score;
